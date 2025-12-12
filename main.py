@@ -224,5 +224,5 @@ with tabs[1]:
                 )
 
             except Exception as e:
-                st.error(f"Failed to g
+                st.error(f"Failed to generate or upload amended DST: {e}")
 
