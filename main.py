@@ -13,8 +13,8 @@ from googleapiclient.http import MediaIoBaseUpload
 SERVICE_ACCOUNT_FILE = "credentials.json"  # Service account JSON in the same folder
 
 # Google Drive folder IDs (replace with your actual folder IDs)
-ORIGINAL_DST_FOLDER_ID = "YOUR_ORIGINAL_DST_FOLDER_ID"
-AMENDED_DST_FOLDER_ID = "YOUR_AMENDED_DST_FOLDER_ID"
+ORIGINAL_DST_FOLDER_ID = "1evbb47pc4wVovWkzmIXEtFADXogiVKBy"
+AMENDED_DST_FOLDER_ID = "1uHnJYnk_ULo5xtxJyAwxE_4OddFOZQUm"
 
 # Columns that FL is allowed to edit
 EDITABLE_COLUMNS = [
