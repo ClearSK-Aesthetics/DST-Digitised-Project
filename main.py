@@ -28,15 +28,20 @@ EDITABLE_COLUMNS = [
 # Google Drive helpers
 # ==========================
 @st.cache_resource
-def get_drive_service():
-    """Create and cache a Google Drive service client using a service account."""
-    service_account_info = json.loads(st.secrets["google_service_account"])
-    credentials = service_account.Credentials.from_service_account_info(
-        service_account_info,
-        scopes=["https://www.googleapis.com/auth/drive"],
+def setup_gdrive():
+    creds_dict = json.loads(st.secrets["google_service_account"])
+    if"Private_key" in creds_dict:
+        creds_dict["private_key"]
+        .replace("\\n","\n")
+        .strip()
+      )
+    scopes=["https://www.googleapis.com/auth/drive"]
+    creds=service_accounts.Credentials.from_service_account_info(
+        creds_dict,
+        scopes=scopes
     )
-    service = build("drive", "v3", credentials=credentials)
-    return service
+    service = build("drive","v3",credentials = creds)
+    
 
 
 def upload_to_gdrive(service, folder_id: str, file_bytes: bytes, filename: str) -> str:
