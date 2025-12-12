@@ -30,10 +30,10 @@ EDITABLE_COLUMNS = [
 @st.cache_resource
 def setup_gdrive():
     creds_dict = json.loads(st.secrets["google_service_account"])
-    if"Private_key" in creds_dict:
+    if"private_key" in creds_dict:
         creds_dict["private_key"]=(
-        .replace("\\n","\n")
-        .strip()
+            .replace("\\n","\n")
+            .strip()
         )
     scopes=["https://www.googleapis.com/auth/drive"]
     creds=service_accounts.Credentials.from_service_account_info(
