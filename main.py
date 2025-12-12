@@ -35,8 +35,9 @@ EDITABLE_COLUMNS = [
 @st.cache_resource
 def get_drive_service():
     """Create and cache a Google Drive service client using a service account."""
-    credentials = service_account.Credentials.from_service_account_file(
-        SERVICE_ACCOUNT_FILE,
+    service_account_info = json.loads(st.secrets["google_service_account"])
+    credentials = service_account.Credentials.from_service_account_info(
+        service_account_info,
         scopes=["https://www.googleapis.com/auth/drive"],
     )
     service = build("drive", "v3", credentials=credentials)
