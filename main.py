@@ -9,12 +9,7 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseUpload
 
-# CONFIG
-# ==========================
-credentials = service_account.Credentials.from_service_account_file(
-    SERVICE_ACCOUNT_FILE,
-    scopes=[https://www.googleapis.com/auth/drive"],
-)
+
 
 # Google Drive folder IDs (replace with your actual folder IDs)
 ORIGINAL_DST_FOLDER_ID = "1evbb47pc4wVovWkzmIXEtFADXogiVKBy"
