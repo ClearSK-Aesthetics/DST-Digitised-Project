@@ -32,6 +32,7 @@ def setup_gdrive():
     creds_dict = json.loads(st.secrets["google_service_account"])
     if"private_key" in creds_dict:
         creds_dict["private_key"]=(
+            creds_dict["private_key"]
             .replace("\\n","\n")
             .strip()
         )
