@@ -29,14 +29,12 @@ EDITABLE_COLUMNS = [
 # ==========================
 @st.cache_resource
 def get_drive_service():
-    raw_json = st.secrets["google_service_account"]
-    creds_dict = json.loads(raw_json)
-    if"private_key" in creds_dict:
-        creds_dict["private_key"] = creds_dict["private_key"].replace("\\n","\n")
-    creds=service_account.Credentials.from_service_account_info(
+    creds_dict = dict(st.secrets["google_service_account"])
+    creds = service_account.Credentials.from_service_account_info(
         creds_dict,
-        scope=["https://www.googleapis.com/auth/drive"],
+        scopes=["https://www.googleapis.com/auth/drive"],
     )
+   
     return build("drive","v3",credentials = creds)
     
 
