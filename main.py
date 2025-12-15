@@ -28,20 +28,20 @@ EDITABLE_COLUMNS = [
 # Google Drive helpers
 # ==========================
 @st.cache_resource
-def setup_gdrive():
+def get_drive_service():
     creds_dict = json.loads(st.secrets["google_service_account"])
-    if"private_key" in creds_dict:
+    if"private_key" in creds_dict and isinstance(creds_dict["private_key"],str):
         creds_dict["private_key"]=(
             creds_dict["private_key"]
             .replace("\\n","\n")
             .strip()
         )
     scopes=["https://www.googleapis.com/auth/drive"]
-    creds=service_accounts.Credentials.from_service_account_info(
+    creds=service_account.Credentials.from_service_account_info(
         creds_dict,
         scopes=scopes
     )
-    service = build("drive","v3",credentials = creds)
+    return build("drive","v3",credentials = creds)
     
 
 
