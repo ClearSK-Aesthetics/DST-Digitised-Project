@@ -33,7 +33,7 @@ def get_drive_service():
     scopes=["https://www.googleapis.com/auth/drive"]
     creds=service_account.Credentials.from_service_account_info(
         creds_dict,
-        scopes=scopes
+        scopes=scopes,
     )
     return build("drive","v3",credentials = creds)
     
